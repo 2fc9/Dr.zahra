@@ -1,0 +1,912 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيادات زهرة التخصصية لطب وتجميل الأسنان</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Tajawal) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- html2pdf.js Library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    },
+                    colors: {
+                        clinic: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            550: '#0d9488',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        },
+                        gold: {
+                            50: '#fbfbf4',
+                            100: '#f7f6e1',
+                            200: '#ede8b7',
+                            300: '#dfd483',
+                            400: '#cfb94f',
+                            500: '#bca13b',
+                            600: '#a3842f',
+                            700: '#816325',
+                            800: '#694f22',
+                            900: '#57411e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .clinic-pattern {
+            background-color: #f0fdfa;
+            background-image: radial-gradient(#0d9488 0.5px, transparent 0.5px), radial-gradient(#0d9488 0.5px, #f0fdfa 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            opacity: 0.05;
+        }
+    </style>
+</head>
+<body class="font-sans bg-slate-50 text-slate-800 selection:bg-clinic-600 selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Brand -->
+                <div class="flex items-center gap-3">
+                    <div class="flex-shrink-0 bg-clinic-50 p-2 rounded-xl border border-clinic-100 shadow-inner">
+                        <!-- Elegant Custom SVG Logo (Lotus + Tooth + Dental Implant) -->
+                        <svg class="w-12 h-12 text-clinic-600" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Upper Petals / Tooth Crown -->
+                            <path d="M50 15C56 30 72 32 78 45C84 58 76 75 62 75C55 75 50 68 50 68C50 68 45 75 38 75C24 75 16 58 22 45C28 32 44 30 50 15Z" fill="currentColor" fill-opacity="0.15"/>
+                            <path d="M50 20C54 32 68 34 72 45C76 56 68 68 58 68C53 68 50 62 50 62C50 62 47 68 42 68C32 68 24 56 28 45C32 34 46 32 50 20Z" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <!-- Dental Roots / Lotus Stem/Details -->
+                            <path d="M38 68C38 78 45 85 50 85C55 85 62 78 62 68" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                            <!-- Sparkle/Shine (Zahra concept) -->
+                            <circle cx="50" cy="46" r="5" fill="#bca13b"/>
+                            <path d="M50 35V41" stroke="#bca13b" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M50 51V57" stroke="#bca13b" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M41 46H45" stroke="#bca13b" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M55 46H59" stroke="#bca13b" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="block text-xl font-black text-clinic-800 tracking-tight">عيادات زهرة</span>
+                        <span class="block text-xs font-bold text-gold-600 tracking-widest uppercase">التخصصية لطب الأسنان</span>
+                    </div>
+                </div>
+
+                <!-- Navigation Links - Desktop -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#hero" class="text-slate-600 hover:text-clinic-600 font-medium transition-colors">الرئيسية</a>
+                    <a href="#doctor" class="text-slate-600 hover:text-clinic-600 font-medium transition-colors">الدكتورة</a>
+                    <a href="#services" class="text-slate-600 hover:text-clinic-600 font-medium transition-colors">خدماتنا</a>
+                    <a href="#location" class="text-slate-600 hover:text-clinic-600 font-medium transition-colors">موقعنا</a>
+                </div>
+
+                <!-- Contact & Book CTA -->
+                <div class="flex items-center gap-3">
+                    <a href="tel:+9647746282176" class="hidden sm:flex items-center gap-2 text-clinic-700 bg-clinic-50 hover:bg-clinic-100 px-4 py-2 rounded-xl font-bold text-sm transition-all border border-clinic-100">
+                        <i data-lucide="phone" class="w-4 h-4"></i>
+                        <span>+964 774 628 2176</span>
+                    </a>
+                    <a href="#booking-section" class="bg-clinic-600 hover:bg-clinic-700 text-white font-bold px-6 py-3 rounded-xl shadow-md shadow-clinic-600/10 hover:shadow-lg hover:shadow-clinic-600/20 transition-all flex items-center gap-2">
+                        <i data-lucide="calendar-days" class="w-5 h-5"></i>
+                        <span>احجز موعداً</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative overflow-hidden bg-gradient-to-br from-clinic-50 via-white to-gold-50/30 py-16 lg:py-24">
+        <!-- Abstract Background Shapes -->
+        <div class="absolute inset-0 clinic-pattern pointer-events-none"></div>
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-clinic-200/20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-gold-200/20 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text Content -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-right">
+                    <span class="inline-flex items-center gap-2 bg-clinic-100 text-clinic-800 font-semibold px-4 py-1.5 rounded-full text-sm border border-clinic-200 shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-clinic-600 animate-pulse"></span>
+                        أهلاً بكم في عيادات زهرة التخصصية
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
+                        ابتسامة مشرقة وصحية<br>
+                        تبدأ من <span class="text-clinic-600 relative inline-block">رعاية تخصصية
+                            <svg class="absolute -bottom-2 left-0 w-full h-3 text-gold-400" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0,5 Q50,10 100,5" stroke="currentColor" stroke-width="4" fill="none"/></svg>
+                        </span>
+                    </h1>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        تحت إشراف الدكتورة المتميزة <strong class="text-clinic-800">زهرة المصطفى أحمد الموسوي</strong>. نقدم لكم أرقى مستويات العلاج الطبي والتجميلي للأسنان وصناعتها، بأحدث التقنيات الطبية لضمان راحتكم وسلامتكم.
+                    </p>
+
+                    <!-- Features badglets -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
+                        <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center lg:items-start gap-2">
+                            <div class="p-2 bg-clinic-50 text-clinic-600 rounded-lg">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <span class="font-bold text-sm text-slate-800">تعقيم بمعايير عالمية</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center lg:items-start gap-2">
+                            <div class="p-2 bg-clinic-50 text-clinic-600 rounded-lg">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </div>
+                            <span class="font-bold text-sm text-slate-800">تجميل وزراعة الأسنان</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm col-span-2 sm:col-span-1 flex flex-col items-center lg:items-start gap-2">
+                            <div class="p-2 bg-clinic-50 text-clinic-600 rounded-lg">
+                                <i data-lucide="clock" class="w-6 h-6"></i>
+                            </div>
+                            <span class="font-bold text-sm text-slate-800">مواعيد دقيقة ومريحة</span>
+                        </div>
+                    </div>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#booking-section" class="w-full sm:w-auto text-center bg-clinic-600 hover:bg-clinic-700 text-white font-bold px-8 py-4 rounded-2xl shadow-lg shadow-clinic-600/20 hover:shadow-xl transition-all text-lg">
+                            احجز موعدك الآن
+                        </a>
+                        <a href="https://wa.me/9647746282176" target="_blank" class="w-full sm:w-auto text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-4 rounded-2xl shadow-lg shadow-emerald-600/10 hover:shadow-xl transition-all text-lg flex items-center justify-center gap-2">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.324 5.328 0 11.894 0c3.18 0 6.171 1.242 8.423 3.498 2.253 2.256 3.491 5.253 3.487 8.435-.008 6.571-5.334 11.895-11.9 11.895-2.006-.001-3.98-.507-5.729-1.472L0 24zm6.49-4.981c1.561.927 3.09 1.403 4.802 1.404 5.332 0 9.673-4.34 9.678-9.672.002-2.584-1.002-5.013-2.829-6.841-1.828-1.827-4.26-2.829-6.845-2.829-5.337 0-9.679 4.341-9.684 9.674-.002 1.83.491 3.619 1.425 5.17l-.988 3.606 3.702-.971z"/>
+                            </svg>
+                            <span>استشارة عبر الواتساب</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Elegant Graphics Grid -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <div class="relative w-full max-w-[400px]">
+                        <!-- Decorative glow -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-clinic-600 to-gold-400 rounded-3xl rotate-6 scale-105 opacity-10 blur-xl"></div>
+                        
+                        <!-- Main Card -->
+                        <div class="relative bg-white p-6 rounded-3xl border border-slate-100 shadow-2xl space-y-6">
+                            <!-- Premium Illustrated Dental Icon -->
+                            <div class="aspect-square bg-gradient-to-br from-clinic-500 to-clinic-700 rounded-2xl flex flex-col items-center justify-center text-white relative overflow-hidden p-8 shadow-inner">
+                                <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span> العيادة مفتوحة الآن
+                                </div>
+                                <svg class="w-32 h-32 drop-shadow-lg text-white" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M50 12C56 26 74 28 80 42C86 56 78 74 62 74C55 74 50 66 50 66C50 66 45 74 38 74C22 74 14 56 20 42C26 28 44 26 50 12Z" fill="currentColor" fill-opacity="0.1"/>
+                                    <path d="M50 16C54 28 70 30 74 42C78 54 70 68 60 68C54 68 50 60 50 60C50 60 46 68 40 68C30 68 22 54 26 42C30 30 46 28 50 16Z" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M38 68C38 78 45 84 50 84C55 84 62 78 62 68" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                                    <circle cx="50" cy="44" r="6" fill="#facc15"/>
+                                </svg>
+                                <span class="text-xl font-bold mt-4 tracking-wide text-clinic-50">د. زهرة المصطفى الموسوي</span>
+                                <span class="text-xs text-clinic-200 mt-1">اخصائية طب الأسنان وصناعتها</span>
+                            </div>
+
+                            <!-- Doctor's Mini Bio -->
+                            <div class="space-y-3">
+                                <h3 class="font-bold text-slate-800 text-lg">عيادات زهرة التخصصية</h3>
+                                <div class="flex items-center gap-2 text-slate-500 text-sm">
+                                    <i data-lucide="map-pin" class="w-4 h-4 text-clinic-600 flex-shrink-0"></i>
+                                    <span>البصرة، بريهة، قرب مجمع السياب</span>
+                                </div>
+                                <div class="flex items-center gap-2 text-slate-500 text-sm">
+                                    <i data-lucide="heart" class="w-4 h-4 text-rose-500 flex-shrink-0"></i>
+                                    <span>جميع أنواع أمراض الأسنان والعلاجات تجميلية</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctor Section -->
+    <section id="doctor" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Image Side -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-tr from-gold-100 to-clinic-100 rounded-3xl -rotate-3"></div>
+                        <div class="relative bg-white p-4 rounded-3xl border border-slate-100 shadow-xl overflow-hidden max-w-sm">
+                            <!-- Custom elegant medical avatar frame -->
+                            <div class="w-80 h-96 bg-gradient-to-b from-clinic-50 to-clinic-200 rounded-2xl flex flex-col items-center justify-end overflow-hidden p-6 relative">
+                                <div class="absolute inset-0 flex items-center justify-center opacity-10">
+                                    <i data-lucide="heart-pulse" class="w-48 h-48 text-clinic-800"></i>
+                                </div>
+                                <!-- Elegant silhouette for medical specialist illustration -->
+                                <svg class="w-64 h-64 text-clinic-700/80 drop-shadow-md z-10" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Head and hair -->
+                                    <circle cx="50" cy="35" r="16" fill="currentColor"/>
+                                    <!-- Hijab/Medical cap draping -->
+                                    <path d="M32 35C32 20 68 20 68 35C68 50 62 55 50 55C38 55 32 50 32 35Z" fill="currentColor" opacity="0.9"/>
+                                    <!-- Stethoscope around neck -->
+                                    <path d="M40 55C40 68 60 68 60 55" stroke="#bca13b" stroke-width="4" stroke-linecap="round"/>
+                                    <path d="M60 55C60 62 56 65 50 65C44 65 40 62 40 55" stroke="currentColor" stroke-width="2"/>
+                                    <!-- Shoulders and Lab Coat -->
+                                    <path d="M22 85C22 70 34 62 50 62C66 62 78 70 78 85H22Z" fill="currentColor"/>
+                                    <!-- Lab Coat collar v-shape -->
+                                    <path d="M50 62L42 75H58L50 62Z" fill="#ffffff"/>
+                                </svg>
+                                <div class="bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-clinic-100 w-full text-center z-20 mt-4">
+                                    <h4 class="font-bold text-slate-800">د. زهرة المصطفى الموسوي</h4>
+                                    <span class="text-xs text-gold-600 font-bold block mt-1">رقم العضوية الطبية التخصصية العراقي</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Side -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="text-clinic-600 font-bold uppercase tracking-wider block">الأخصائية الطبية</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 leading-tight">
+                        د. زهرة المصطفى أحمد الموسوي
+                    </h2>
+                    <p class="text-lg text-slate-700 font-semibold">
+                        أخصائية طب، تجميل، وصناعة الأسنان في البصرة.
+                    </p>
+                    <div class="space-y-4 text-slate-600 leading-relaxed">
+                        <p>
+                            تتميز الدكتورة زهرة بخبرة واسعة ومتميزة في علاج جميع أمراض الأسنان واللثة، مع تخصص دقيق ومتطور في صناعة الأسنان الاصطناعية الثابتة والمتحركة، وجراحة الأسنان التجميلية.
+                        </p>
+                        <p>
+                            نؤمن في عياداتنا بأن العلاج لا ينتهي بزوال الألم فقط، بل يمتد لتقديم تجربة مريحة تماماً للمريض عبر توفير بيئة معقمة ومريحة نفسياً تكسر حاجز الخوف الشائع من زيارة طبيب الأسنان.
+                        </p>
+                    </div>
+
+                    <!-- Highlight Bullet Points -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="flex items-start gap-3">
+                            <span class="p-1 bg-clinic-100 text-clinic-700 rounded-lg mt-1">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </span>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">علاجات متكاملة وشاملة</h4>
+                                <p class="text-xs text-slate-500">من الوقاية البسيطة وحتى الجراحات التخصصية وصناعة الأسنان.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="p-1 bg-clinic-100 text-clinic-700 rounded-lg mt-1">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </span>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">أدق التقنيات الحديثة</h4>
+                                <p class="text-xs text-slate-500">نستخدم مواد وخامات طبية أصلية ذات جودة ومتانة معتمدة عالمياً.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-slate-50 relative overflow-hidden">
+        <div class="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-white to-transparent pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <span class="text-clinic-600 font-bold uppercase tracking-wider">ماذا نقدم في العيادة؟</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-900">علاجات تخصصية تضمن سلامة ابتسامتك</h2>
+                <p class="text-slate-600">نوفر طيفاً واسعاً من الخدمات العلاجية والتجميلية للأسنان بأعلى مستويات الدقة والاحترافية.</p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service 1: Dental Prosthetics -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-clinic-50 text-clinic-600 flex items-center justify-center mb-6 group-hover:bg-clinic-600 group-hover:text-white transition-all">
+                        <i data-lucide="smile" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">صناعة وتركيب الأسنان</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        تصميم وتصنيع التركيبات السنية الثابتة (تيجان وجسور البورسلين والزيركون) والمتحركة الجزئية والكاملة بمطابقة تامة لشكل الأسنان الطبيعية.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-2 border-t border-slate-100 pt-4">
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-left" class="w-3.5 h-3.5 text-clinic-500"></i> تيجان وجسور الزيركون والإيماكس</li>
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-left" class="w-3.5 h-3.5 text-clinic-500"></i> أطقم الأسنان الكاملة والجزئية الحديثة</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2: General Treatments -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-clinic-50 text-clinic-600 flex items-center justify-center mb-6 group-hover:bg-clinic-600 group-hover:text-white transition-all">
+                        <i data-lucide="activity" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">علاج جميع أمراض الأسنان</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        تشخيص وعلاج التهابات اللثة، تسوس الأسنان، معالجة جذور وأعصاب الأسنان بأجهزة حديثة لتقليل الألم والوقت المستغرق.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-2 border-t border-slate-100 pt-4">
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-left" class="w-3.5 h-3.5 text-clinic-500"></i> علاج وحشو العصب بأحدث الأجهزة</li>
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-left" class="w-3.5 h-3.5 text-clinic-500"></i> حشوات ضوئية وتجميلية متينة</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3: Cosmetic Dentistry -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-clinic-50 text-clinic-600 flex items-center justify-center mb-6 group-hover:bg-clinic-600 group-hover:text-white transition-all">
+                        <i data-lucide="sparkles" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">تجميل الأسنان وابتسامة هوليوود</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        تعديل وتجميل الابتسامة باستخدام قشور الفينير التجميلية، وتبييض الأسنان بالليزر لإعطاء مظهر طبيعي جذاب ومبهر.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-2 border-t border-slate-100 pt-4">
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-left" class="w-3.5 h-3.5 text-clinic-500"></i> تبييض الأسنان بالعيادة ليزرياً</li>
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-left" class="w-3.5 h-3.5 text-clinic-500"></i> قشور الفينير واللومينير فائقة الرقة</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4: Periodontics -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-clinic-50 text-clinic-600 flex items-center justify-center mb-6 group-hover:bg-clinic-600 group-hover:text-white transition-all">
+                        <i data-lucide="droplet" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">علاج أمراض اللثة وتنظيف الجير</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        إزالة الرواسب الجيرية العميقة المتراكمة وتلميع الأسنان وعلاج نزيف اللثة المزمن لضمان رائحة فم منعشة وأساس أسنان سليم.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-2 border-t border-slate-100 pt-4">
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-left" class="w-3.5 h-3.5 text-clinic-500"></i> تنظيف الجير بالموجات فوق الصوتية</li>
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-left" class="w-3.5 h-3.5 text-clinic-500"></i> توريد اللثة وعلاج التراجع</li>
+                    </ul>
+                </div>
+
+                <!-- Service 5: Pediatric Dentistry -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-clinic-50 text-clinic-600 flex items-center justify-center mb-6 group-hover:bg-clinic-600 group-hover:text-white transition-all">
+                        <i data-lucide="baby" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">طب أسنان الأطفال</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        رعاية طبية لطيفة ومحببة لأسنان الأطفال لمنع التسوس، حشو الأسنان اللبنية، وعلاج مشكلاتها برحابة صدر ودون خوف أو قلق.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-2 border-t border-slate-100 pt-4">
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-left" class="w-3.5 h-3.5 text-clinic-500"></i> حماية الأسنان بمادة الفلورايد وسد الشقوق</li>
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-left" class="w-3.5 h-3.5 text-clinic-500"></i> تهيئة نفسية ممتازة للأطفال</li>
+                    </ul>
+                </div>
+
+                <!-- Service 6: Minor Surgery -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-clinic-50 text-clinic-600 flex items-center justify-center mb-6 group-hover:bg-clinic-600 group-hover:text-white transition-all">
+                        <i data-lucide="scissors" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">جراحة الفم وقلع الأسنان البسيطة والجراحية</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        إجراء عمليات القلع البسيط وقلع أضراس العقل المنطمرة جراحياً بأقل قدر ممكن من التداخل الجراحي لضمان سرعة الشفاء والاستشفاء بعد العلاج.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-2 border-t border-slate-100 pt-4">
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-left" class="w-3.5 h-3.5 text-clinic-500"></i> قلع ضرس العقل المطمور والمدفون</li>
+                        <li class="flex items-center gap-2"><i data-lucide="chevron-left" class="w-3.5 h-3.5 text-clinic-500"></i> تخدير موضعي فعال ومريح</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Booking & Form Interactive Section -->
+    <section id="booking-section" class="py-20 bg-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            
+            <div class="text-center space-y-4 mb-12">
+                <span class="text-clinic-600 font-bold uppercase tracking-wider">نظام حجز المواعيد الفوري</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-900">سجل حجزك واحصل على تذكرتك كـ PDF</h2>
+                <p class="text-slate-600">املأ الاستمارة أدناه لتأكيد موعد زيارتك للعيادة وتوليد ملف حجز حقيقي للتأكيد الفوري.</p>
+            </div>
+
+            <!-- Main Booking Card -->
+            <div class="bg-white rounded-3xl border border-slate-150 shadow-xl overflow-hidden">
+                <div class="bg-gradient-to-r from-clinic-750 to-clinic-600 bg-clinic-600 text-white p-6 sm:p-8 flex items-center justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold">نموذج الحجز الإلكتروني للعيادة</h3>
+                        <p class="text-xs text-clinic-100 mt-1">الرجاء إدخال البيانات بدقة لضمان تأكيد الموعد بالشكل الصحيح.</p>
+                    </div>
+                    <i data-lucide="calendar-plus" class="w-10 h-10 text-clinic-100 opacity-80 hidden sm:block"></i>
+                </div>
+
+                <!-- Interactive Form -->
+                <form id="appointmentForm" class="p-6 sm:p-8 space-y-6" onsubmit="handleFormSubmit(event)">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        
+                        <!-- Patient Name -->
+                        <div class="space-y-2">
+                            <label for="fullName" class="block font-bold text-slate-700 text-sm">اسم المريض الكامل <span class="text-rose-500">*</span></label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400">
+                                    <i data-lucide="user" class="w-5 h-5"></i>
+                                </span>
+                                <input type="text" id="fullName" required placeholder="أدخل اسمك الثلاثي" class="w-full pr-10 pl-3 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-clinic-500 focus:border-clinic-500 transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Patient Phone Number -->
+                        <div class="space-y-2">
+                            <label for="phoneNumber" class="block font-bold text-slate-700 text-sm">رقم الهاتف للتواصل <span class="text-rose-500">*</span></label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400">
+                                    <i data-lucide="phone" class="w-5 h-5"></i>
+                                </span>
+                                <input type="tel" id="phoneNumber" required placeholder="مثال: 07746282176" class="w-full pr-10 pl-3 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-clinic-500 focus:border-clinic-500 transition-all text-left" dir="ltr">
+                            </div>
+                        </div>
+
+                        <!-- Date Selection -->
+                        <div class="space-y-2">
+                            <label for="bookDate" class="block font-bold text-slate-700 text-sm">تاريخ الحجز المفضل <span class="text-rose-500">*</span></label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400">
+                                    <i data-lucide="calendar" class="w-5 h-5"></i>
+                                </span>
+                                <input type="date" id="bookDate" required class="w-full pr-10 pl-3 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-clinic-500 focus:border-clinic-500 transition-all text-right">
+                            </div>
+                        </div>
+
+                        <!-- Time Selection -->
+                        <div class="space-y-2">
+                            <label for="bookTime" class="block font-bold text-slate-700 text-sm">وقت الحجز المقترح <span class="text-rose-500">*</span></label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400">
+                                    <i data-lucide="clock" class="w-5 h-5"></i>
+                                </span>
+                                <select id="bookTime" required class="w-full pr-10 pl-3 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-clinic-500 focus:border-clinic-500 transition-all appearance-none bg-white">
+                                    <option value="" disabled selected>اختر الوقت المناسب</option>
+                                    <option value="4:00 مساءً - 5:00 مساءً">4:00 مساءً - 5:00 مساءً</option>
+                                    <option value="5:00 مساءً - 6:00 مساءً">5:00 مساءً - 6:00 مساءً</option>
+                                    <option value="6:00 مساءً - 7:00 مساءً">6:00 مساءً - 7:00 مساءً</option>
+                                    <option value="7:00 مساءً - 8:00 مساءً">7:00 مساءً - 8:00 مساءً</option>
+                                    <option value="8:00 مساءً - 9:00 مساءً">8:00 مساءً - 9:00 مساءً</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Service Type -->
+                        <div class="space-y-2 sm:col-span-2">
+                            <label for="serviceType" class="block font-bold text-slate-700 text-sm">نوع العلاج المطلوب <span class="text-rose-500">*</span></label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400">
+                                    <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                                </span>
+                                <select id="serviceType" required class="w-full pr-10 pl-3 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-clinic-500 focus:border-clinic-500 transition-all appearance-none bg-white">
+                                    <option value="" disabled selected>اختر الخدمة أو الحالة العلاجية</option>
+                                    <option value="صناعة وتركيب أسنان (ثابت أو متحرك)">صناعة وتركيب أسنان (ثابت أو متحرك)</option>
+                                    <option value="حشو أسنان وعلاج العصب والألم">حشو أسنان وعلاج العصب والألم</option>
+                                    <option value="تجميل الأسنان (ابتسامة هوليوود / فينير)">تجميل الأسنان (ابتسامة هوليوود / فينير)</option>
+                                    <option value="تنظيف الجير وتلميع وعلاج اللثة">تنظيف الجير وتلميع وعلاج اللثة</option>
+                                    <option value="قلع أسنان عادي أو جراحي">قلع أسنان عادي أو جراحي</option>
+                                    <option value="طب أسنان أطفال">طب أسنان أطفال</option>
+                                    <option value="استشارة وفحص عام وتشخيص">استشارة وفحص عام وتشخيص</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Notes / Special Conditions -->
+                        <div class="space-y-2 sm:col-span-2">
+                            <label for="patientNotes" class="block font-bold text-slate-700 text-sm">ملاحظات إضافية أو مشاكل صحية (اختياري)</label>
+                            <textarea id="patientNotes" placeholder="أذكر هنا أي تفاصيل تود اطلاع الدكتورة عليها كالحساسية أو أدوية معينة..." rows="3" class="w-full p-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-clinic-500 focus:border-clinic-500 transition-all"></textarea>
+                        </div>
+
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-clinic-600 hover:bg-clinic-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-clinic-600/20 hover:shadow-xl transition-all flex items-center justify-center gap-3 text-lg cursor-pointer">
+                            <i data-lucide="check-circle" class="w-6 h-6"></i>
+                            <span>تأكيد الحجز وتوليد تذكرة PDF</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Map & Contact Info Section -->
+    <section id="location" class="py-20 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                
+                <!-- Contact info panel -->
+                <div class="lg:col-span-5 space-y-8 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <span class="text-clinic-600 font-bold uppercase tracking-wider block">أين تجدوننا؟</span>
+                        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 leading-tight">موقع عيادات زهرة التخصصية</h2>
+                        <p class="text-slate-600 leading-relaxed">
+                            تشرفنا زيارتكم لعيادتنا الكائنة في أرقى وأنشط المناطق الطبية في محافظة البصرة لضمان حصولكم على أفضل رعاية طبية مستحقة.
+                        </p>
+                    </div>
+
+                    <!-- Practical Contact Card Grid -->
+                    <div class="space-y-4">
+                        <!-- Location Detail -->
+                        <div class="flex items-start gap-4 bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
+                            <div class="p-3 bg-clinic-50 text-clinic-600 rounded-xl">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-base">عنوان العيادة</h4>
+                                <p class="text-slate-600 text-sm mt-1">البصرة، منطقة بريهة، قرب مجمع السياب الطبي</p>
+                            </div>
+                        </div>
+
+                        <!-- Phone & Booking info -->
+                        <div class="flex items-start gap-4 bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
+                            <div class="p-3 bg-clinic-50 text-clinic-600 rounded-xl">
+                                <i data-lucide="phone-call" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-base">الاتصال المباشر والحجز</h4>
+                                <a href="tel:+9647746282176" class="text-clinic-600 font-bold text-base hover:underline block mt-1" dir="ltr">+964 774 628 2176</a>
+                                <p class="text-slate-500 text-xs mt-1">متواجدون للرد على كافة استفساراتكم وحجوزاتكم الطارئة.</p>
+                            </div>
+                        </div>
+
+                        <!-- Working Hours -->
+                        <div class="flex items-start gap-4 bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
+                            <div class="p-3 bg-clinic-50 text-clinic-600 rounded-xl">
+                                <i data-lucide="calendar" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-base">أوقات العمل المعتمدة</h4>
+                                <p class="text-slate-600 text-sm mt-1">يومياً من الساعة 4:00 مساءً حتى الساعة 9:00 مساءً</p>
+                                <p class="text-slate-500 text-xs mt-1">(الجمعة عطلة العيادة الأسبوعية)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Frame Simulator -->
+                <div class="lg:col-span-7">
+                    <div class="relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl h-full min-h-[350px] bg-slate-200 flex flex-col justify-between">
+                        <!-- Custom Map UI with Leaflet/OpenStreetMap styled beautifully with Tailwind overlay -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.4925760237734!2d47.818817!3d30.505833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDMwJzIxLjAiTiA0N8KwNDknMDcuNyJF!5e0!3m2!1sar!2siq!4v1654000000000!5m2!1sar!2siq" 
+                            class="w-full h-full border-0 absolute inset-0"
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                        <!-- Map Marker Label -->
+                        <div class="absolute bottom-4 right-4 left-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-clinic-100 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-clinic-600 text-white flex items-center justify-center">
+                                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-sm">عيادات زهرة التخصصية</h4>
+                                    <p class="text-xs text-slate-500">بريهة، بالقرب من مجمع السياب</p>
+                                </div>
+                            </div>
+                            <a href="https://maps.google.com/?q=30.505833,47.818817" target="_blank" class="bg-clinic-600 hover:bg-clinic-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition-all">
+                                فتح في خرائط Google
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Ticket Preview & Download (The real booking confirmation) -->
+    <div id="ticketModal" class="fixed inset-0 z-50 overflow-y-auto hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full shadow-2xl overflow-hidden transform scale-95 opacity-0 transition-all duration-300 relative border border-slate-100" id="ticketModalCard">
+            
+            <!-- Modal Header -->
+            <div class="bg-clinic-600 text-white p-6 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="ticket" class="w-6 h-6"></i>
+                    <h3 class="font-black text-lg">تذكرة موعد العيادة المؤكدة</h3>
+                </div>
+                <button onclick="closeTicketModal()" class="text-white hover:bg-white/15 p-2 rounded-lg transition-all">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <!-- Print/PDF Element Area -->
+            <div class="p-6 sm:p-8" id="ticketContentWrapper">
+                <!-- Inner Elegant Printable Ticket Frame -->
+                <div class="border-2 border-dashed border-clinic-300 rounded-2xl p-6 bg-clinic-50/40 space-y-6 relative overflow-hidden" id="pdfPrintableArea">
+                    <!-- Elegant Background Watermark -->
+                    <div class="absolute -bottom-10 -left-10 opacity-5 pointer-events-none">
+                        <svg class="w-56 h-56 text-clinic-600" viewBox="0 0 100 100" fill="currentColor">
+                            <path d="M50 15C56 30 72 32 78 45C84 58 76 75 62 75C55 75 50 68 50 68C50 68 45 75 38 75C24 75 16 58 22 45C28 32 44 30 50 15Z"/>
+                        </svg>
+                    </div>
+
+                    <!-- Clinic header inside ticket -->
+                    <div class="flex items-center justify-between border-b border-clinic-200 pb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-clinic-600 text-white p-2 rounded-xl">
+                                <svg class="w-8 h-8 text-white" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M50 20C54 32 68 34 72 45C76 56 68 68 58 68C53 68 50 62 50 62C50 62 47 68 42 68C32 68 24 56 28 45C32 34 46 32 50 20Z" stroke="currentColor" stroke-width="6"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="block text-base font-black text-clinic-800">عيادات زهرة التخصصية</span>
+                                <span class="block text-3xs font-bold text-gold-600 uppercase tracking-wider">لطب وصناعة الأسنان</span>
+                            </div>
+                        </div>
+                        <div class="text-left">
+                            <span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-full border border-emerald-200">مؤكد وموثق</span>
+                            <span class="block text-3xs text-slate-400 mt-1" id="ticketIdDisplay">ID: #---</span>
+                        </div>
+                    </div>
+
+                    <!-- Main Info Grid -->
+                    <div class="grid grid-cols-2 gap-y-4 gap-x-6 text-sm">
+                        <div>
+                            <span class="text-3xs text-slate-400 block font-bold uppercase">المرض المراجع</span>
+                            <span class="font-bold text-slate-800 text-base" id="ticketNameDisplay">-- الاسم --</span>
+                        </div>
+                        <div>
+                            <span class="text-3xs text-slate-400 block font-bold uppercase">رقم الهاتف</span>
+                            <span class="font-bold text-slate-800 text-sm select-all" id="ticketPhoneDisplay">-- رقم الهاتف --</span>
+                        </div>
+                        <div>
+                            <span class="text-3xs text-slate-400 block font-bold uppercase">تاريخ الموعد</span>
+                            <span class="font-bold text-clinic-700 text-base flex items-center gap-1.5">
+                                <i data-lucide="calendar" class="w-4 h-4 text-clinic-600"></i>
+                                <span id="ticketDateDisplay">-- التاريخ --</span>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="text-3xs text-slate-400 block font-bold uppercase">وقت المقابلة</span>
+                            <span class="font-bold text-clinic-700 text-base flex items-center gap-1.5">
+                                <i data-lucide="clock" class="w-4 h-4 text-clinic-600"></i>
+                                <span id="ticketTimeDisplay">-- الوقت --</span>
+                            </span>
+                        </div>
+                        <div class="col-span-2">
+                            <span class="text-3xs text-slate-400 block font-bold uppercase">العلاج والتشخيص المطلوب</span>
+                            <span class="font-semibold text-slate-800 bg-white border border-slate-100 px-3 py-1.5 rounded-lg block mt-1" id="ticketServiceDisplay">-- الخدمة المطلوبة --</span>
+                        </div>
+                        <div class="col-span-2" id="ticketNotesContainer">
+                            <span class="text-3xs text-slate-400 block font-bold uppercase">ملاحظات طبية مسبقة</span>
+                            <p class="text-slate-600 text-xs italic bg-white border border-slate-100 p-3 rounded-lg block mt-1" id="ticketNotesDisplay">-- لا يوجد ملاحظات --</p>
+                        </div>
+                    </div>
+
+                    <!-- Footer signature info -->
+                    <div class="border-t border-clinic-200 pt-4 flex flex-col sm:flex-row items-center justify-between text-3xs text-slate-400 gap-3">
+                        <div class="flex items-center gap-1">
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-clinic-600"></i>
+                            <span>البصرة، بريهة - قرب مجمع السياب</span>
+                        </div>
+                        <div class="text-center font-bold text-clinic-600">
+                            <span>للاتصال والتعديل: +964 774 628 2176</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Action Buttons (Real workflow triggers) -->
+            <div class="bg-slate-50 p-6 border-t border-slate-100 flex flex-col sm:flex-row gap-3">
+                <button onclick="downloadPDF()" class="flex-1 bg-clinic-600 hover:bg-clinic-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
+                    <i data-lucide="download" class="w-5 h-5"></i>
+                    <span>تحميل تذكرة الحجز (PDF)</span>
+                </button>
+                <button onclick="sendWhatsAppConfirmation()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.324 5.328 0 11.894 0c3.18 0 6.171 1.242 8.423 3.498 2.253 2.256 3.491 5.253 3.487 8.435-.008 6.571-5.334 11.895-11.9 11.895-2.006-.001-3.98-.507-5.729-1.472L0 24zm6.49-4.981c1.561.927 3.09 1.403 4.802 1.404 5.332 0 9.673-4.34 9.678-9.672.002-2.584-1.002-5.013-2.829-6.841-1.828-1.827-4.26-2.829-6.845-2.829-5.337 0-9.679 4.341-9.684 9.674-.002 1.83.491 3.619 1.425 5.17l-.988 3.606 3.702-.971z"/>
+                    </svg>
+                    <span>أرسل لتأكيد الموعد عبر الواتساب</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Toast Success Notification System -->
+    <div id="toastSuccess" class="fixed bottom-5 left-5 z-50 bg-slate-900 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-800 transition-all transform translate-y-20 opacity-0 pointer-events-none">
+        <span class="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center flex-shrink-0">
+            <i data-lucide="check" class="w-5 h-5"></i>
+        </span>
+        <div>
+            <h5 class="font-bold text-sm">تم إرسال حجزك بنجاح!</h5>
+            <p class="text-3xs text-slate-400 mt-0.5">يمكنك الآن تحميل تذكرة الـ PDF وتأكيد حجزك.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pb-8 border-b border-slate-800">
+                
+                <div class="md:col-span-6 flex items-center gap-4">
+                    <div class="bg-slate-800 p-2 rounded-xl">
+                        <svg class="w-10 h-10 text-clinic-400" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 20C54 32 68 34 72 45C76 56 68 68 58 68C53 68 50 62 50 62C50 62 47 68 42 68C32 68 24 56 28 45C32 34 46 32 50 16Z" stroke="currentColor" stroke-width="4"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="block text-lg font-black text-white">عيادات زهرة التخصصية</span>
+                        <span class="block text-xs">تحت إشراف الدكتورة زهرة المصطفى أحمد الموسوي</span>
+                    </div>
+                </div>
+
+                <!-- Fast Links -->
+                <div class="md:col-span-6 flex flex-wrap gap-6 justify-start md:justify-end text-sm">
+                    <a href="#hero" class="hover:text-white transition-colors">الرئيسية</a>
+                    <a href="#doctor" class="hover:text-white transition-colors">الدكتورة</a>
+                    <a href="#services" class="hover:text-white transition-colors">الخدمات العلاجية</a>
+                    <a href="#location" class="hover:text-white transition-colors">الموقع والاتصال</a>
+                </div>
+
+            </div>
+
+            <!-- Bottom Disclaimer/Copyrights -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs gap-4 text-slate-500">
+                <span>© 2026 عيادات زهرة التخصصية. جميع الحقوق محفوظة لـ د. زهرة المصطفى الموسوي.</span>
+                <span class="flex items-center gap-1">
+                    صُنع بـ <i data-lucide="heart" class="w-3.5 h-3.5 text-rose-500 fill-current"></i> لأهالي البصرة الكرام
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Handling Core Functionality -->
+    <script>
+        // Initialize Lucide Icons for dynamic visual elegance
+        lucide.createIcons();
+
+        // Object holding last successful booked session state
+        let lastBookingData = null;
+
+        // Custom function to handle booking submit
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            // Extract values safely
+            const nameValue = document.getElementById('fullName').value.trim();
+            const phoneValue = document.getElementById('phoneNumber').value.trim();
+            const dateValue = document.getElementById('bookDate').value;
+            const timeValue = document.getElementById('bookTime').value;
+            const serviceValue = document.getElementById('serviceType').value;
+            const notesValue = document.getElementById('patientNotes').value.trim();
+
+            if (!nameValue || !phoneValue || !dateValue || !timeValue || !serviceValue) {
+                return;
+            }
+
+            // Generate booking ID and compile booking model
+            const bookingId = "ZH-" + Math.floor(100000 + Math.random() * 90000);
+            lastBookingData = {
+                id: bookingId,
+                name: nameValue,
+                phone: phoneValue,
+                date: dateValue,
+                time: timeValue,
+                service: serviceValue,
+                notes: notesValue || 'لا يوجد ملاحظات إضافية'
+            };
+
+            // Inject state into Modal view Elements
+            document.getElementById('ticketIdDisplay').textContent = `ID: #${bookingId}`;
+            document.getElementById('ticketNameDisplay').textContent = nameValue;
+            document.getElementById('ticketPhoneDisplay').textContent = phoneValue;
+            document.getElementById('ticketDateDisplay').textContent = dateValue;
+            document.getElementById('ticketTimeDisplay').textContent = timeValue;
+            document.getElementById('ticketServiceDisplay').textContent = serviceValue;
+            
+            const notesContainer = document.getElementById('ticketNotesContainer');
+            if (notesValue) {
+                notesContainer.style.display = "block";
+                document.getElementById('ticketNotesDisplay').textContent = notesValue;
+            } else {
+                notesContainer.style.display = "none";
+            }
+
+            // Open Modal
+            openTicketModal();
+            
+            // Trigger Toast success element briefly
+            triggerSuccessToast();
+        }
+
+        // Modal Action Helpers
+        function openTicketModal() {
+            const modal = document.getElementById('ticketModal');
+            const card = document.getElementById('ticketModalCard');
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                card.classList.remove('scale-95', 'opacity-0');
+                card.classList.add('scale-100', 'opacity-100');
+            }, 50);
+        }
+
+        function closeTicketModal() {
+            const modal = document.getElementById('ticketModal');
+            const card = document.getElementById('ticketModalCard');
+            
+            card.classList.remove('scale-100', 'opacity-100');
+            card.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Toast trigger helper
+        function triggerSuccessToast() {
+            const toast = document.getElementById('toastSuccess');
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 5000);
+        }
+
+        // WhatsApp redirect string generator
+        function sendWhatsAppConfirmation() {
+            if (!lastBookingData) return;
+
+            const basePhone = "9647746282176";
+            const textMessage = encodeURIComponent(
+                `مرحباً عيادات زهرة التخصصية،\n\nأود تأكيد الحجز الطبي الخاص بي بالمعلومات التالية:\n\n` +
+                `- رقم الحجز: #${lastBookingData.id}\n` +
+                `- الاسم الكامل: ${lastBookingData.name}\n` +
+                `- رقم الهاتف: ${lastBookingData.phone}\n` +
+                `- تاريخ الحجز: ${lastBookingData.date}\n` +
+                `- وقت المقابلة: ${lastBookingData.time}\n` +
+                `- نوع العلاج: ${lastBookingData.service}\n` +
+                `- ملاحظات إضافية: ${lastBookingData.notes}\n\n` +
+                `يرجى تأكيد جهوزيتكم لاستقبالي. شكراً جزيلاً.`
+            );
+
+            window.open(`https://wa.me/${basePhone}?text=${textMessage}`, '_blank');
+        }
+
+        // Download Ticket element as dynamic clean PDF
+        function downloadPDF() {
+            if (!lastBookingData) return;
+
+            const element = document.getElementById('pdfPrintableArea');
+            
+            // Customize PDF configs for highly legible RTL and crisp vector output
+            const opt = {
+                margin:       10,
+                filename:     `عيادات_زهرة_موعد_${lastBookingData.id}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Run html2pdf download
+            html2pdf().from(element).set(opt).save();
+        }
+    </script>
+</body>
+</html>
+
